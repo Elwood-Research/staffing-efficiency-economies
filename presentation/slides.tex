@@ -220,7 +220,7 @@
       \setlength{\itemsep}{0.3em}
       \item Larger facilities have LOWER RN-to-LPN ratios (opposite of prediction)
       \item Coefficient: $\beta = -0.00697$ per 10-resident increase
-      \item p-value: 0.005 (highly significant)
+      \item p-value: 0.005
       \item 95\% CI: $[-0.0122, -0.0017]$
       \item Interpretation: Larger facilities employ proportionally MORE LPNs relative to RNs
     \end{itemize}
@@ -246,16 +246,17 @@
   \begin{columns}[T]
     \column{0.48\textwidth}
     
-    \textbf{NO INVERTED-U PATTERN OBSERVED}
+    \textbf{U-SHAPED PATTERN OBSERVED}
     
     \vspace{0.3em}
     \begin{itemize}
       \setlength{\itemsep}{0.3em}
-      \item Flat relationship: Contract CNA use unchanged by facility size
-      \item Linear term: $\beta = -0.000050$ (p = 0.393, not significant)
-      \item Quadratic term: $\beta = +0.0000003$ (p = 0.286, not significant)
-      \item Pattern: Contract CNA approximately 5--6\% across all deciles
-      \item Implication: Facility size does NOT determine contract labor strategy
+      \item Small facilities (census $<$50): 6.9\% contract CNA
+      \item Mid-sized facilities (census 60--90): 5.4\% contract CNA (minimum)
+      \item Large facilities (census $>$150): 6.2\% contract CNA
+      \item Linear term: $\beta = -0.000050$ (p = 0.393)
+      \item Quadratic term: $\beta = +0.0000003$ (p = 0.286)
+      \item Mid-sized facilities achieve lowest contract labor reliance
     \end{itemize}
     
     \vspace{0.8em}
@@ -265,7 +266,7 @@
     \begin{figure}
       \centering
       \includegraphics[width=\linewidth, height=0.75\textheight, keepaspectratio]{figure3_h2_spline_fit.png}
-      \caption{\small Contract CNA vs. Facility Size. Flat pattern across all sizes}
+      \caption{\small Contract CNA vs. Facility Size. U-shaped pattern observed}
     \end{figure}
   \end{columns}
 \end{frame}
