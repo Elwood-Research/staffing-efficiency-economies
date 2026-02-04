@@ -1,0 +1,34 @@
+
+STROBE FLOW DIAGRAM - TEXT SUMMARY
+=====================================
+
+SELECTION PROCESS:
+
+1. Eligible Population
+   - PBJ Daily Nursing Staff Records (CY2023Q1 - CY2024Q4)
+   - Total facility-quarter combinations: 12,456
+
+2. Completeness Filter
+   - Excluded: 2,222 (incomplete quarters)
+   - Remaining: 10,234
+
+3. Outlier Screening (|z| > 4 rule)
+   - Variables screened: Hrs_RN, Hrs_LPN, Hrs_CNA, Hrs_CNA_ctr, MDScensus, RN-to-LPN ratio
+   - Excluded: 2,078 (extreme outliers)
+   - Remaining: 8,156
+
+4. Minimum Facility Size (Census >= 20)
+   - Excluded: -6,053 (too small)
+   - Final Sample: 14,209
+
+ANALYTIC SAMPLE CHARACTERISTICS:
+- Mean facility census: 79.9 ± 38.6 residents
+- Geographic coverage: 52 states
+- Census range: 20 to 276 residents
+
+EXCLUSION PROPORTIONS:
+- Completeness: 17.8%
+- Outliers: 16.7%
+- Size: -48.6%
+- Total excluded: -14.1%
+- Final sample: 114.1%

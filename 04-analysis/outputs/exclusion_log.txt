@@ -1,0 +1,51 @@
+EXCLUSION LOG - DATA PREPARATION PHASE
+========================================
+
+Starting Point:
+  Total facility-quarter records loaded: 10,674,717 (8 quarters)
+  Unique facilities: 14,973
+
+Step 1: Duplicate Removal
+  Duplicates removed: 0
+
+Step 2: Aggregation to Facility Level
+  Facilities aggregated: 14,973
+
+Step 3: Outlier Screening (|z| > 4)
+  Outliers removed: 427
+  
+Step 4: Minimum Census Criterion (Census >= 20)
+  Facilities excluded: 337
+
+FINAL ANALYTIC SAMPLE
+  Total facilities: 14,209
+  States represented: 52
+
+Descriptive Statistics - Final Sample
+=====================================
+
+Resident Census (daily):
+  Mean: 79.9 ± 38.6
+  Median: 75
+  Range: 20 to 276
+
+RN Hours per Resident Day:
+  Mean: 31.51
+  Median: 25.75
+
+LPN Hours per Resident Day:
+  Mean: 63.61
+
+CNA Hours per Resident Day (Direct Hire):
+  Mean: 163.01
+
+CNA Hours per Resident Day (Contract):
+  Mean: 11.526
+
+RN-to-LPN Ratio:
+  Mean: 0.90
+  Median: 0.46
+
+Contract CNA Proportion:
+  Mean: 0.059
+  Median: 0.019

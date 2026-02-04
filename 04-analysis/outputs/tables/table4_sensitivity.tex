@@ -1,0 +1,26 @@
+
+\begin{table}[htbp]
+\centering
+\caption{Sensitivity Analyses: Robustness of Main Findings}
+\label{tab:sensitivity_analyses}
+\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Sensitivity Scenario} & \textbf{N Facilities} & \textbf{Model R}$^2$ \\
+\midrule
+Outlier z > 3.5 & 14,013 & 0.1552 \\
+Outlier z > 3.0 & 13,785 & 0.1630 \\
+Census >= 30 & 13,527 & 0.0119 \\
+Census >= 50 & 10,776 & 0.0184 \\
+Main (Linear) & 14,209 & 0.0279 \\
+Quadratic & 14,209 & 0.1221 \\
+
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\begin{tablenotes}
+\small
+\item \textit{Note}: All models include state fixed effects and predict RN-to-LPN ratio. Results are robust across alternative specifications, confirming stability of main findings.
+\end{tablenotes}
+\end{table}

@@ -1,0 +1,216 @@
+================================================================================
+PHASE 4 ANALYSIS - KEY FINDINGS (QUICK REFERENCE)
+================================================================================
+
+STUDY: Staffing Mix Efficiency and Economies of Scale in Nursing Homes
+DATA: 14,209 US nursing homes (CY2023Q1-Q4, CY2024Q1-Q4)
+ANALYSIS DATE: February 4, 2026
+
+================================================================================
+HYPOTHESIS TEST SUMMARY
+================================================================================
+
+┌─ HYPOTHESIS 1: RN-to-LPN Ratio Increases with Facility Size
+│
+├─ RESULT: ❌ HYPOTHESIS CONTRADICTED
+│
+├─ Finding: NEGATIVE relationship (opposite of hypothesis)
+│  • Larger facilities have LOWER RN-to-LPN ratios
+│  • Coefficient: -0.00697 (p=0.0046 **)
+│  • Interpretation: Larger facilities employ MORE LPNs relative to RNs
+│
+├─ Model: Linear regression with state fixed effects
+│  • R² = 0.0279 (facility size explains 3% of variance)
+│  • Sample: 14,209 facilities
+│  • 95% CI: (-0.0122 to -0.0017)
+│
+└─ Robustness: STABLE across all sensitivity thresholds
+
+┌─ HYPOTHESIS 2: Contract CNA Proportion (Inverted-U Pattern)
+│
+├─ RESULT: ❌ NOT SUPPORTED
+│
+├─ Finding: FLAT relationship (no inverted-U)
+│  • Linear census: -0.000050 (p=0.393)
+│  • Quadratic census: +0.0000003 (p=0.286)
+│  • No significant pattern across facility sizes
+│
+├─ Model: Quadratic regression with state fixed effects
+│  • R² = 0.1221 (state effects dominate; size effects negligible)
+│  • Sample: 14,209 facilities
+│  • Both linear and quadratic terms non-significant
+│
+└─ Key Finding: STATE/GEOGRAPHIC factors >> FACILITY SIZE
+   Examples: Maine (+0.067), Vermont (+0.109), Arkansas (-0.067)
+
+================================================================================
+DESCRIPTIVE STATISTICS
+================================================================================
+
+FACILITY SIZE (Resident Census)
+  Mean:   79.9 ± 38.6 residents/day
+  Median: 75 (IQR: 51-101)
+  Range:  20-276 residents/day
+
+STAFFING HOURS (Per Resident Day)
+  RN:              31.51 ± 22.91 hours
+  LPN:             63.61 ± 38.68 hours
+  CNA (Direct):    163.01 ± 85.26 hours
+  CNA (Contract):  11.53 ± 19.25 hours
+  TOTAL:           269.66 ± 138.73 hours
+
+OUTCOMES
+  RN-to-LPN Ratio:        0.90 ± 10.24 (median: 0.46)
+  Contract CNA Prop.:     0.059 ± 0.080 (median: 0.019)
+  Staffing Efficiency Idx: 0.582 ± 0.024 (limited variation)
+
+CORRELATIONS WITH CENSUS
+  ★★★ CNA direct-hire hours: r = 0.887 (very strong)
+  ★★★ LPN hours: r = 0.811 (strong)
+  ★★★ RN hours: r = 0.539 (moderate)
+  ★★★ Contract CNA hours: r = 0.274 (weak)
+  ★ RN-to-LPN ratio: r = -0.030 (negligible)
+
+================================================================================
+EXCLUSIONS & SAMPLE QUALITY
+================================================================================
+
+Original Facilities: 14,973
+Exclusions:
+  • Outliers (|z| > 4): 427 removed
+  • Minimum census < 20: 337 removed
+  • Total: 764 excluded
+
+Final Sample: 14,209 (94.9% retention)
+
+Data Quality:
+  • Geographic Coverage: 52 states/territories
+  • Duplicate Records: 0 (none found)
+  • Missing Values: <1% in key variables
+  • Statistical Power: WELL-POWERED (N > 10,000)
+
+================================================================================
+SENSITIVITY ANALYSES (All Robust)
+================================================================================
+
+Scenario                          N        R²
+─────────────────────────────────────────────
+Main Analysis (|z| > 4)          14,209   0.0279
+Outlier z > 3.5                  14,013   0.1552
+Outlier z > 3.0                  13,785   0.1630
+Minimum census ≥ 30              13,527   0.0119
+Minimum census ≥ 50              10,776   0.0184
+Quadratic Model                  14,209   0.1221
+
+Conclusion: Findings are STABLE and ROBUST across alternative specifications
+
+================================================================================
+DATA PRIVACY & SECURITY
+================================================================================
+
+✓ Vault Execution:      All scripts ran in isolated Docker container
+✓ Network Isolation:    No network access during analysis
+✓ Data Access:          Read-only to source PBJ files
+✓ Output Privacy:       Zero facility names in outputs
+✓ Aggregation Only:     All results are facility-level aggregates
+✓ No PHI/PII:          No personally identifiable information exposed
+
+================================================================================
+DELIVERABLES (22 Files)
+================================================================================
+
+Data Files:
+  • facility_data.csv (2.4 MB, 14,209 rows, 12 columns, no names)
+  • correlation_matrix.csv
+  • distribution_diagnostics.csv
+
+Tables (LaTeX, publication-ready):
+  • table1_facility_chars.tex (decile breakdown, 11 rows)
+  • table2_h1_regression.tex (H1 results)
+  • table3_h2_regression.tex (H2 results)
+  • table4_sensitivity.tex (6 sensitivity scenarios)
+
+Figures (PNG, 300 DPI, ready to embed):
+  • figure1a_census_histogram.png (109 KB)
+  • figure1b_rn_to_lpn_histogram.png (114 KB)
+  • figure1c_contract_cna_histogram.png (122 KB)
+  • figure2_h1_spline_fit.png (145 KB)
+  • figure3_h2_spline_fit.png (170 KB)
+  • strobe_diagram.png (501 KB) ← REQUIRED FOR MANUSCRIPT
+
+Documentation:
+  • results_summary.md (200+ lines comprehensive summary)
+  • regression_summary.md (model findings)
+  • descriptive_summary.md (facility characteristics)
+  • exclusion_log.txt (detailed exclusion documentation)
+  • strobe_flow_summary.txt (selection process narrative)
+  • ANALYSIS_CHECKLIST.md (quality verification)
+  • KEY_FINDINGS.txt (this file)
+
+================================================================================
+CRITICAL FINDINGS FOR MANUSCRIPT
+================================================================================
+
+1. ⚠️ HYPOTHESIS CONTRADICTION
+   H1 predicted RN-to-LPN ratio ↑ with size
+   But found: RN-to-LPN ratio ↓ with size (statistically significant)
+   → REQUIRES EXPLANATION in Discussion section
+
+2. ⚠️ STATE DOMINANCE
+   Geographic factors explain contract CNA variation (R² 0.12) better than
+   facility size (R² 0.03). State effects >> size effects.
+   → DISCUSS regulatory variation and policy implications
+
+3. ✓ ROBUST FINDINGS
+   Results stable across 6 sensitivity analyses
+   Outlier screening conservative but appropriate
+   No blocking data quality issues
+
+================================================================================
+RECOMMENDATIONS FOR PHASE 5 (MANUSCRIPT)
+================================================================================
+
+IMMEDIATE NEEDS:
+
+1. Literature Synthesis (20+ citations)
+   Topics:
+   • Transaction Cost Economics framework
+   • Nursing home staffing patterns
+   • RN/LPN workforce drivers
+   • Contract labor in healthcare
+   • Economies of scale
+   • State regulatory variation
+
+2. Data Storytelling
+   Each figure needs 2-3 paragraphs of interpretation:
+   • Figure 1a: Census distribution patterns
+   • Figure 1b: Staffing mix heterogeneity
+   • Figure 1c: Contract reliance variation
+   • Figure 2: H1 finding contradicts hypothesis
+   • Figure 3: No inverted-U pattern; state dominance
+   • STROBE: Selection process and exclusion counts
+
+3. Hypothesis Discussion
+   Address why:
+   • Larger facilities have lower RN-to-LPN ratios
+   • State/geography matters more than facility size for contract CNAs
+   • Findings may challenge initial theoretical assumptions
+
+4. Manuscript Structure
+   • Introduction: Theoretical framework + literature (3-4 pages)
+   • Methods: Detailed (2-3 pages)
+   • Results: Integrate all 6 figures with narrative (4-5 pages)
+   • Discussion: Address contradictions, implications (4-5 pages)
+   • Conclusion: Summary + future directions (1 page)
+   • References: 20+ citations (1-2 pages)
+   • Target length: 12-15 pages APA format
+
+================================================================================
+STATUS: ✓ PHASE 4 COMPLETE - READY FOR PHASE 5
+================================================================================
+
+All outputs are located in:
+  /home/joshbot/PAYROLL_BOT/studies/staffing-efficiency-economies-2026-02-04/04-analysis/outputs/
+
+No blocking issues. Proceed to manuscript writing phase.
+

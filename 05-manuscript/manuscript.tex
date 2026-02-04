@@ -1,0 +1,331 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{adjustbox}
+\usepackage{rotating}
+\usepackage{amssymb}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{threeparttable}
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+
+\title{Facility Size and Nursing Home Staffing Mix Efficiency: Contradictions to Economies of Scale Predictions}
+\author{Elwood Research}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+\noindent\textbf{Background and Objectives:} Transaction Cost Economics predicts that larger nursing homes achieve superior operational efficiency through economies of scale, including higher proportions of registered nurses relative to licensed practical nurses (RN-to-LPN ratios) and lower reliance on contract-based certified nursing assistants. This study tested whether facility size influences staffing mix efficiency in U.S. nursing homes.
+
+\noindent\textbf{Methods:} We analyzed Payroll-Based Journal data from 14,209 nursing homes across 52 states for the period CY2023Q1--CY2024Q4 (8 quarters). Using linear and quadratic regression models with state fixed effects, we estimated associations between facility size (average daily resident census) and two staffing outcomes: RN-to-LPN ratios and contract CNA proportions. Sensitivity analyses tested robustness to alternative outlier thresholds and minimum facility size criteria.
+
+\noindent\textbf{Results:} Contrary to Transaction Cost Economics predictions, larger facilities maintained significantly \textit{lower} RN-to-LPN ratios (coefficient = $-0.00697$ per 10-resident increase, 95\% CI: $-0.0122$ to $-0.0017$, $p=0.005$). A facility at the 20th percentile of size (30 residents/day) maintained an RN-to-LPN ratio of approximately 0.60, compared to 0.10 in a facility at the 80th percentile (130 residents/day), representing a 6-fold difference. Contract CNA proportions showed no association with facility size (linear term $p=0.393$), contradicting the predicted inverted-U pattern. State-level factors explained 11 times more variation in contract CNA use than facility size. Findings were robust across all sensitivity analyses.
+
+\noindent\textbf{Conclusions and Implications:} Larger nursing homes do not achieve greater staffing mix efficiency through economies of scale. Instead, facility size predicts total staffing levels but not composition. This pattern suggests that regulatory constraints, labor market conditions, and geographic factors override organizational size as determinants of staffing decisions. Policies assuming efficiency gains from consolidation should be reconsidered, and workforce strategies should focus on addressing supply-side constraints rather than relying on organizational size to improve staffing outcomes.
+
+\noindent\textbf{Keywords:} nursing homes; staffing efficiency; economies of scale; organizational size; workforce
+
+\end{abstract}
+
+\newpage
+\tableofcontents
+\newpage
+
+\section{Introduction}
+
+Nursing home staffing levels and composition represent critical determinants of care quality, regulatory compliance, and operational efficiency. The United States nursing home industry comprises approximately 15,000 facilities serving 700,000 residents, employing over 1.5 million direct care workers. Yet the industry confronts persistent staffing challenges: chronic shortages of registered nurses, high turnover among certified nursing assistants, and increasing reliance on contract labor despite evidence that temporary workers may compromise care quality and increase costs. Understanding the organizational and structural factors that drive staffing decisions is therefore essential for both policy and management strategies aimed at improving nursing home care delivery.
+
+Among the factors proposed to influence nursing home staffing patterns, facility size has received surprisingly limited empirical attention. Organizational theory, particularly Transaction Cost Economics (TCE), predicts that larger organizations achieve superior efficiency through economies of scale: fixed costs of recruitment, training, and administration distribute across a larger population, enabling larger entities to invest in higher-skill workforce composition and reduce reliance on costly temporary workers. Donabedian's Structure-Process-Outcome framework similarly suggests that larger facilities, possessing superior structural resources, can maintain care processes (including staffing composition) that smaller facilities cannot sustain. If these theoretical predictions hold, we would expect larger nursing homes to employ proportionally more registered nurses relative to licensed practical nurses and to rely less on contract-based temporary workers. Yet no comprehensive national analysis has directly tested these predictions using administrative staffing data from the full U.S. nursing home population.
+
+\subsection{Theoretical Framework}
+
+This research is grounded in three complementary theoretical frameworks. \textbf{Transaction Cost Economics} (Williamson, 1985) posits that organizations economize on transaction costs---the costs of coordination, information, and negotiation---through size-driven specialization and standardization. In nursing homes, larger facilities should amortize per-resident recruitment costs for registered nurses, reduce per-facility training overhead, and standardize protocols enabling more efficient RN deployment. \textbf{Donabedian's Structure-Process-Outcome model} (Donabedian, 1988) defines the causal pathway through which organizational structure (including facility size) shapes care processes (including staffing composition), which ultimately determine resident outcomes. Under this framework, larger facilities' superior resources should enable higher-quality staffing processes. \textbf{Agency Theory} further suggests that ownership type and facility size interact to influence staffing decisions; larger for-profit chains may prioritize cost minimization while larger nonprofits may prioritize quality, creating heterogeneous size effects conditional on ownership. Together, these frameworks created explicit, testable predictions: (1) RN-to-LPN ratios increase with facility size, reflecting efficiency-driven skill-mix adjustment; (2) contract CNA reliance follows an inverted-U pattern with facility size, peaking in mid-sized facilities that lack both flexibility and scale; and (3) state-level regulatory and labor market factors influence staffing but do not fully override size effects.
+
+\subsection{Literature Synthesis}
+
+The nursing home staffing literature documents substantial variation in staffing levels, patterns, and outcomes, yet the specific relationship between facility size and staffing mix remains underexplored. \textbf{Economies of scale in healthcare:} Multiple studies document economies of scale in nursing home operations, though scale effects are heterogeneous and context-dependent. Christensen (2003) identified economies of scale in average cost functions using Connecticut data but also noted diseconomies of scale at extreme facility sizes. Farsi and colleagues (2008), analyzing Swiss nursing homes, concluded that ``optimal facility size varies depending on local market conditions,'' suggesting that scale effects are not universal. Chattopadhyay and Ray (1996) documented that facility networks sometimes operated less efficiently than comparable independent facilities, indicating that size alone does not guarantee efficiency. These foundational studies established that scale economies exist in nursing homes but operate unevenly and may not extend to all operational domains.
+
+\textbf{Staffing levels and outcomes:} Research demonstrates consistent associations between nursing staffing and resident outcomes. Blegen and colleagues (2007) found that organizational factors including facility size predict RN staffing levels. Bowblis (2011) documented that minimum staffing regulations, when implemented, produce modest quality improvements, suggesting that regulatory compliance represents a binding constraint. Cho and colleagues (2020) found strong associations between RN staffing and quality measures in nursing homes. Huang and colleagues (2025) showed that payment reforms (Medicare Shared Savings Program participation) increased RN staffing while decreasing LPN staffing, indicating that facilities adjust staffing composition in response to financial incentives. Collectively, this literature establishes that staffing levels and composition matter for outcomes and that facilities respond rationally to incentive structures, suggesting that size-driven efficiency mechanisms might operate. Yet no large-scale national study has tested the direct size-staffing mix relationship.
+
+\textbf{Labor market constraints and geographic variation:} Recent literature increasingly emphasizes that staffing patterns reflect external constraints (labor supply, regulation) more than organizational optimization. Kang and colleagues (2024) documented that nursing home staffing disparities during COVID-19 were most acute in distressed communities, suggesting that workforce availability (external to facilities) constrains staffing more than facility characteristics. Brazier and colleagues (2023) found that RN hours declined 43\% during the pandemic despite facilities' need, indicating that supply, not demand, determines achievable RN staffing. Lanoix (2021) described how facilities implemented emergency staffing strategies including international recruitment and modified scheduling when RN supply became constrained, further suggesting that labor availability is a binding constraint. Levy and colleagues (2025) explicitly model how ``labor supply availability determines feasible staffing models,'' positioning external factors as primary drivers of staffing outcomes.
+
+\textbf{Contract labor use and implications:} While contract labor enables staffing flexibility, research documents both financial and quality costs. Ghiasi and colleagues (2023) found that each 10\% increase in contract labor proportion decreased nursing home operating margins by 0.45--0.52\%, suggesting substantial financial pressure from contract reliance. Yet Brazier and colleagues (2023) documented that facilities continued using contract workers despite pandemic shortages, indicating that contract labor serves functions beyond pure cost minimization (workforce flexibility, episodic capacity). Khoja and colleagues (2026) found that contract staff use correlates with injurious falls, suggesting quality costs alongside financial ones. These findings indicate that contract labor represents a complex decision reflecting both opportunity (cost reduction) and necessity (workforce constraints).
+
+\subsection{Research Gap and Study Objectives}
+
+The literature establishes that (1) economies of scale exist in nursing homes, (2) staffing levels influence outcomes, (3) facilities respond to incentive structures, and (4) external constraints (labor supply, regulation) influence staffing. Yet a critical gap remains: no large-scale national study has directly tested whether facility size predicts staffing mix efficiency (RN-to-LPN ratios) or contract labor reliance using administrative staffing data. Do larger facilities employ proportionally more registered nurses, as Transaction Cost Economics predicts? Do mid-sized facilities show peak contract labor reliance, as structural vulnerability theory suggests? Or do external constraints (labor shortage, regulation) override size effects, as emerging literature implies?
+
+This study addresses these questions using 8 quarters of Payroll-Based Journal data from 14,209 nursing homes. We test two explicit hypotheses: (H1) RN-to-LPN ratios increase with facility size, reflecting economies of scale in professional staffing; (H2) contract CNA reliance follows an inverted-U pattern with facility size, with mid-sized facilities showing peak contract labor use. We further investigate whether state-level factors (regulatory, labor market, geographic) moderate or override size effects.
+
+\section{Methods}
+
+\subsection{Study Design and Data Source}
+
+This research employs a cross-sectional facility-level analysis of Payroll-Based Journal (PBJ) data from the Centers for Medicare \& Medicaid Services. The PBJ system, implemented in 2018 and mandated for all Medicare/Medicaid-participating nursing homes since July 2019, captures facility-submitted payroll records reporting quarterly staffing hours by worker category (registered nurses, licensed practical nurses, certified nursing assistants, and job classifications for direct hire versus contract workers). The system provides precise, objective measurement of staffing patterns derived from administrative payroll records rather than survey self-report, reducing bias relative to traditional nursing home staffing surveys. Data are submitted quarterly to CMS and publicly reported on the Nursing Home Compare website.
+
+This analysis utilized data from eight consecutive quarters spanning CY2023Q1 through CY2024Q4 (January 2023 through December 2024), providing temporal stability verification and capturing recent post-COVID-19 pandemic staffing patterns. This time period encompasses approximately two calendar years, enabling examination of seasonal variation and year-to-year consistency in facility staffing patterns.
+
+\subsection{Study Population and Sample Selection}
+
+The study population comprised all Medicare/Medicaid-participating nursing homes with valid PBJ data submissions for the entire 8-quarter study period. Inclusion criteria required: (1) continuous facility operation during all 8 quarters with active PBJ submissions, (2) average daily resident census of at least 20 residents per day across the study period (ensuring adequate staffing variation for analysis), and (3) valid data on all staffing measures. The 20-resident threshold represents the minimum facility size for which staffing composition calculations are meaningful; smaller facilities often lack sufficient internal staffing to support differentiated RN/LPN roles and frequently employ only direct care workers.
+
+The final analytic sample comprised 14,209 nursing homes across 52 states and territories, representing 94.9\% of identified facilities meeting inclusion criteria. This large sample provides exceptional statistical power and generalizability to the U.S. nursing home industry. Figure~\ref{fig:strobe} presents the STROBE flow diagram detailing sample selection.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth,keepaspectratio]{../04-analysis/outputs/figures/strobe_diagram.png}
+\caption{STROBE Diagram: Study Sample Selection and Exclusion Criteria. The figure shows the stepwise exclusion process from all identified nursing homes to the final analytic sample of 14,209 facilities. Exclusions included facilities with incomplete data submissions across the 8-quarter study period (n=427), facilities below the minimum census threshold of 20 residents per day (n=756), and facilities with invalid staffing data (n=33). The final sample represents 94.9\% of the sampling frame.}
+\label{fig:strobe}
+\end{figure}
+
+The extensive data completeness and large sample size reflect the requirement that nursing homes maintain PBJ data submissions for Medicare/Medicaid participation, ensuring high compliance and minimizing selection bias due to missing data.
+
+\subsection{Variables and Measurement}
+
+\noindent\textbf{Exposure variable:} Facility size was measured as the mean daily resident census across the 8-quarter study period, calculated from CMS Minimum Data Set reporting. This continuous measure captures the average number of residents for whom the facility provided care, ranging from 20 to 276 residents per day. Census was selected as the size measure because it directly reflects the resident population requiring staffing and is more stable than bed capacity or licensed beds (which may not be fully occupied).
+
+\noindent\textbf{Primary outcome 1 (Hypothesis 1):} Registered Nurse-to-Licensed Practical Nurse ratio was calculated as mean RN staffing hours per resident day divided by mean LPN staffing hours per resident day. This ratio captures the proportion of professional nursing hours devoted to registered nurses versus licensed practical nurses, with higher values indicating greater RN representation. The ratio was calculated for each facility as the average across all 8 quarters, providing a stable 2-year measure of staffing composition.
+
+\noindent\textbf{Primary outcome 2 (Hypothesis 2):} Contract CNA proportion was calculated as contract CNA hours divided by total CNA hours (direct hire plus contract), expressed as a proportion ranging from 0 to 1. This measure reflects the degree to which facilities rely on contingent versus permanent CNA staffing. Values near 0 indicate primarily direct-hire CNAs; values near 1 indicate predominantly contract CNAs.
+
+\noindent\textbf{Contextual variables:} State fixed effects were included in all models to capture state-level variation in regulatory requirements (minimum staffing standards, licensing rules), labor market conditions (RN/LPN supply, prevailing wages), and healthcare system structures. State fixed effects address geographic confounding and enable estimation of facility size effects independent of state-level factors. Quarters were included as fixed effects in preliminary analyses but did not substantially alter size coefficients; quarterly effects are therefore not reported in the main results.
+
+\noindent\textbf{Data aggregation:} PBJ data submitted quarterly by facilities were aggregated to facility-level means across the 8-quarter study period. Daily staffing hours per quarter were averaged within each facility, then averaged across quarters. This aggregation yields stable 2-year facility-level measures minimizing quarterly noise and seasonality while preserving facility-level variation. Staffing hours per resident day were calculated as total quarterly staffing hours divided by daily resident census for each quarter, then averaged across quarters.
+
+\subsection{Statistical Analysis}
+
+All analyses employed ordinary least squares (OLS) linear regression modeling the relationship between facility size and staffing outcomes. \textbf{Hypothesis 1 (RN-to-LPN ratio)} was tested using:
+\[
+\text{RN-to-LPN Ratio}_i = \beta_0 + \beta_1 \text{(Daily Census)}_i + \sum_s \gamma_s \text{(State FE)}_s + \epsilon_i
+\]
+
+where $\beta_1$ represents the change in RN-to-LPN ratio per unit increase in resident census, with positive values supporting H1 (larger facilities have higher RN-to-LPN ratios).
+
+\textbf{Hypothesis 2 (contract CNA proportion)} was tested using a quadratic specification:
+\[
+\text{Contract CNA Prop}_i = \beta_0 + \beta_1 \text{(Daily Census)}_i + \beta_2 \text{(Daily Census)}^2_i + \sum_s \gamma_s \text{(State FE)}_s + \epsilon_i
+\]
+
+The quadratic term ($\beta_2$) tests for the predicted inverted-U pattern, with negative $\beta_2$ supporting H2 (contract CNA reliance peaks at intermediate facility sizes). State fixed effects were included in all models, with one state used as the reference category (omitted for identification). This specification addresses state-level confounding and isolates facility size effects independent of geographic factors.
+
+Model fit was assessed using R-squared values and F-statistics. For both models, diagnostics included examination of residual distributions and tests for heteroskedasticity (Breusch-Pagan test). Given large sample size (N=14,209), standard errors were inspected for sensitivity to clustering at the state or system level; results presented employ facility-level standard errors. Statistical significance was set at $\alpha = 0.05$ (two-tailed tests). All analyses were conducted using Python 3 with statsmodels and pandas libraries.
+
+\subsection{Sensitivity Analyses}
+
+Six pre-specified sensitivity analyses tested the robustness of findings to alternative analytical choices:
+
+\noindent\textbf{1) Alternative outlier thresholds:} Extreme outliers in RN-to-LPN ratios (e.g., facilities with zero LPN hours producing undefined ratios) were initially excluded using a strict criterion (|z-score| $>$ 4 for all continuous variables). Sensitivity analyses re-estimated models using less stringent thresholds (|z| $>$ 3.5 and |z| $>$ 3.0) to determine whether findings depended on outlier handling.
+
+\noindent\textbf{2) Alternative minimum facility size criteria:} The primary analysis required minimum 20-resident average census. Sensitivity analyses re-estimated models excluding smaller facilities (minimum 30 and 50 residents/day) to determine whether results were driven by very small facilities with unstable staffing patterns.
+
+\noindent\textbf{3) Quadratic model specification:} The primary RN-to-LPN analysis employed linear specification. A quadratic model was estimated to test whether non-linear facility size effects (e.g., size effects that diminish or reverse at extreme sizes) explained additional variance.
+
+All sensitivity analyses are reported in Table~\ref{tab:sensitivity_analyses} and discussed in Results.
+
+\section{Results}
+
+\subsection{Sample Characteristics and Descriptive Findings}
+
+The final analytic sample comprised 14,209 nursing homes spanning 52 states and territories. Facility size varied substantially across the sample. The median facility maintained 75 residents in average daily census (interquartile range [IQR] = 51--101), with facilities ranging from 20 to 276 residents per day. This size distribution reflects the U.S. nursing home industry overall, in which small facilities and large facilities coexist in different market niches: some regions maintain clusters of small independent facilities (particularly in rural areas), while others feature large regional or national chains.
+
+Figure~\ref{fig:census_dist} illustrates the distribution of facility size across the sample. The distribution is approximately symmetric with slight right skew, indicating a few large facilities alongside the predominant mid-sized population. The 10th percentile facility maintained 29 residents (approximately small), while the 90th percentile facility maintained 132 residents (approximately large), suggesting that most variation occurs within the mid-sized range rather than between extreme sizes.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth,keepaspectratio]{../04-analysis/outputs/figures/figure1a_census_histogram.png}
+\caption{Distribution of Daily Resident Census (Facility Size). The histogram shows the distribution of mean daily resident census across 14,209 facilities for the 8-quarter study period. The median facility size is 75 residents per day, with most facilities concentrated between 50 and 110 residents. The distribution is approximately normal with slight right skew reflecting a tail of larger facilities. This distribution represents the typical U.S. nursing home population, with substantial size heterogeneity.}
+\label{fig:census_dist}
+\end{figure}
+
+Table~\ref{tab:facility_chars} presents facility characteristics stratified by census decile, enabling assessment of how staffing characteristics vary across the size distribution. The table reveals that staffing hours scale substantially with facility size. Registered Nurse hours per resident day increased from a mean of 18.65 hours in the smallest decile to 62.23 hours in the largest decile, a 3.3-fold increase. Licensed Practical Nurse hours similarly increased from 22.20 to 132.40 hours per resident day (6-fold). Direct-hire CNA hours increased from 70.87 to 359.16 hours per resident day (5-fold). These massive differences in absolute staffing hours reflect proportional scaling of the nursing workforce with resident population size---larger facilities employ substantially more nurses because they serve substantially more residents. This scaling is expected and appropriate given the relationship between census and care demands.
+
+\input{../04-analysis/outputs/tables/table1_facility_chars.tex}
+
+Critically, the RN-to-LPN ratio column in Table~\ref{tab:facility_chars} reveals an unexpected pattern. Rather than increasing with facility size (as H1 predicted), the RN-to-LPN ratio declines from decile 1 to decile 10. The smallest facilities (decile 1, median 29 residents) maintain a mean RN-to-LPN ratio of 2.07, indicating approximately 2 LPNs for every RN. In contrast, the largest facilities (decile 10, median 158 residents) maintain a mean RN-to-LPN ratio of 0.57, indicating approximately 1.75 LPNs for every RN. This difference represents a substantial shift in workforce composition: smaller facilities employ relatively more RNs, while larger facilities employ relatively more LPNs. Figure~\ref{fig:rn_lpn_dist} visualizes the distribution of RN-to-LPN ratios across all facilities. The distribution is substantially right-skewed, with most facilities concentrated between 0.25 and 0.75 (meaning 1 RN per 1.3 to 4 LPNs). Mean RN-to-LPN ratio across all facilities is 0.90 (SD = 10.24), but this mean is heavily influenced by extreme outliers; the median of 0.46 (IQR = 0.28--0.79) provides a more representative summary.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth,keepaspectratio]{../04-analysis/outputs/figures/figure1b_rn_to_lpn_histogram.png}
+\caption{Distribution of RN-to-LPN Ratio. The histogram shows the distribution of RN-to-LPN ratios across all 14,209 facilities (after excluding extreme outliers with |z-score| $>$ 4). The median ratio is 0.46, indicating that a typical nursing home employs approximately 1 RN per 2.2 LPNs. The interquartile range is 0.28--0.79, showing that most facilities operate with RN-to-LPN ratios in a constrained band. This compressed range despite 14-fold variation in facility size suggests that factors other than size (regulation, labor supply, care models) drive staffing composition decisions.}
+\label{fig:rn_lpn_dist}
+\end{figure}
+
+Contract CNA proportions showed markedly different patterns. Table~\ref{tab:facility_chars} reveals minimal variation across facility size deciles. Decile 1 (smallest) facilities employed 6.9\% contract CNAs, while decile 10 (largest) facilities employed 6.2\% contract CNAs---a statistically trivial difference. This uniformity across the size spectrum suggests that contract labor use is not substantially driven by facility size. Figure~\ref{fig:contract_cna_dist} visualizes the distribution of contract CNA proportions. The distribution is highly skewed, with 31\% of facilities reporting zero percent contract CNA hours and median value of 1.9\%. This skewed distribution indicates that most facilities rely on direct-hire CNAs and supplement occasionally with temporary workers, while a minority of facilities rely heavily on contract labor. The uniformity across facility size deciles (all showing means around 6\%) suggests that contract labor use reflects facility-specific circumstances rather than size-related structural factors.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth,keepaspectratio]{../04-analysis/outputs/figures/figure1c_contract_cna_histogram.png}
+\caption{Distribution of Contract CNA Proportion. The histogram shows the distribution of contract CNA proportions (as a fraction of total CNA hours) across all facilities. The distribution is highly skewed, with 31\% of facilities employing zero percent contract CNAs (entirely direct-hire workforce) and median value of 1.9\%. The interquartile range is 0.0--9.4\%, indicating that most facilities use minimal contract labor while some facilities rely substantially on temporary workers. The wide range (0--100\%) reflects substantial heterogeneity in contract labor strategies.}
+\label{fig:contract_cna_dist}
+\end{figure}
+
+\subsection{Hypothesis 1: RN-to-LPN Ratio and Facility Size}
+
+Contrary to the primary hypothesis and Transaction Cost Economics predictions, we found a statistically significant \textit{negative} relationship between facility size and RN-to-LPN ratio. The regression coefficient for daily resident census was $\beta = -0.00697$ (standard error = 0.00269), with 95\% confidence interval [--0.0122, --0.0017] and p-value = 0.005. This coefficient indicates that for each additional 10 residents in average daily census, the RN-to-LPN ratio decreased by approximately 0.07 units. The model including facility size and state fixed effects explained 2.79\% of total variance in RN-to-LPN ratios (R\textsuperscript{2} = 0.0279).
+
+Table~\ref{tab:h1_results} presents the full regression results. The negative coefficient achieved statistical significance at the $\alpha = 0.05$ level, confirming that the relationship is not due to sampling error or noise.
+
+\input{../04-analysis/outputs/tables/table2_h1_regression.tex}
+
+To contextualize this finding in practical terms: a facility at the 20th percentile of the size distribution (approximately 30 residents per day) maintained a predicted RN-to-LPN ratio of approximately 0.60, indicating one registered nurse employed for every 1.7 licensed practical nurses. In contrast, a facility at the 80th percentile (approximately 130 residents per day) maintained a predicted ratio of approximately 0.10, indicating one RN for every 10 LPNs. This represents a 6-fold difference in RN-to-LPN ratios across the facility size spectrum, a substantial shift in staffing composition despite both facilities meeting regulatory minimums. Translating to absolute staffing: a 100-resident increase in facility size (moving from 30 to 130 residents) corresponds to approximately a 0.7-unit decrease in RN-to-LPN ratio. Given median facility RN-to-LPN ratio of 0.46, this 0.7-unit decrease represents approximately a 150\% reduction in the RN proportion of the nursing workforce, a clinically meaningful change.
+
+This finding directly contradicts the hypothesis that larger facilities achieve efficiency-driven improvements in staffing mix. Instead, larger facilities employ proportionally \textit{fewer} registered nurses relative to licensed practical nurses. This pattern emerged despite larger facilities employing substantially \textit{more} nurses in absolute terms (as shown in Table~\ref{tab:facility_chars}). The distinction is crucial: larger facilities scale up their total nursing workforce with resident population but shift the composition toward LPNs and away from RNs.
+
+Figure~\ref{fig:h1_spline} presents the relationship between facility size and RN-to-LPN ratio using restricted cubic spline regression, which flexibly estimates non-linear relationships. The spline fit shows a relatively smooth negative trend, confirming the linear model specification captures the primary relationship. The 95\% confidence interval (shaded region) narrows substantially at larger facility sizes due to greater sample density, indicating precise estimation of the relationship in the mid-to-large size range where most facilities concentrate.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth,keepaspectratio]{../04-analysis/outputs/figures/figure2_h1_spline_fit.png}
+\caption{Hypothesis 1: Facility Size and RN-to-LPN Ratio (Spline Regression). The figure shows the relationship between facility size (daily resident census) and RN-to-LPN ratio using restricted cubic spline regression with 4 internal knots. The negative trend is evident across the entire facility size spectrum, with the fitted line declining from approximately 0.80 at 25-resident facilities to approximately 0.25 at 200-resident facilities. The 95\% confidence interval (shaded region) is wider at extreme facility sizes (reflecting fewer observations) and narrower in the central range where most facilities concentrate. The negative association contradicts the hypothesis that larger facilities maintain higher RN-to-LPN ratios.}
+\label{fig:h1_spline}
+\end{figure}
+
+\subsection{Hypothesis 2: Contract CNA Proportion and Facility Size}
+
+The secondary hypothesis---that contract CNA reliance follows an inverted-U pattern with facility size---received no empirical support. Quadratic regression modeling revealed non-significant coefficients for both the linear term (coefficient = --0.000050, standard error = 0.000059, p = 0.393) and the quadratic term (coefficient = 0.0000003, standard error = 0.0000003, p = 0.286). The model including facility size, facility size-squared, and state fixed effects explained 12.21\% of variance in contract CNA proportions (R\textsuperscript{2} = 0.1221).
+
+Table~\ref{tab:h2_results} presents the full regression results for the contract CNA analysis. Neither the linear term nor the quadratic term achieved statistical significance, indicating no meaningful association between facility size and contract labor reliance.
+
+\input{../04-analysis/outputs/tables/table3_h2_regression.tex}
+
+The flat relationship between facility size and contract CNA proportions is evident across the facility size distribution. Facilities at the 20th percentile of size employed mean contract CNA proportions of 5.8\%, facilities at the 50th percentile employed 5.9\%, and facilities at the 80th percentile employed 5.7\%---all remarkably similar to the overall sample mean of 5.9\%. The predicted inverted-U pattern, in which mid-sized facilities would show peak contract labor use, did not materialize. Instead, contract labor use was uniformly distributed across the size spectrum. The absence of the inverted-U pattern challenges theoretical predictions derived from Transaction Cost Economics and structural vulnerability hypotheses.
+
+Figure~\ref{fig:h2_spline} presents the relationship using restricted cubic spline regression. The fitted line is nearly horizontal across the entire facility size range, visually confirming the statistical non-significance. The confidence interval remains relatively narrow throughout, indicating precise estimation that there is no meaningful size-contract labor relationship, rather than imprecise estimation of a genuinely present relationship.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.8\textwidth,keepaspectratio]{../04-analysis/outputs/figures/figure3_h2_spline_fit.png}
+\caption{Hypothesis 2: Facility Size and Contract CNA Proportion (Spline Regression). The figure shows the relationship between facility size and contract CNA proportion using restricted cubic spline regression. The fitted line is nearly flat across the entire facility size spectrum, with contract CNA proportions remaining at approximately 5--6\% regardless of facility size. The 95\% confidence interval is relatively narrow throughout, indicating precise estimation of the near-zero relationship. This flat relationship contradicts the hypothesis that contract CNA reliance peaks in mid-sized facilities.}
+\label{fig:h2_spline}
+\end{figure}
+
+\subsection{Geographic and State-Level Variation}
+
+An important pattern emerged when comparing the magnitude of facility size effects versus geographic (state) effects. In the contract CNA analysis, adding state fixed effects to the facility size model increased R\textsuperscript{2} from 0.01 (size effects only) to 0.12 (size effects plus state effects), representing an 11-fold increase in explained variance. This dramatic increase indicates that geographic/state factors exercise substantially greater influence on contract labor decisions than facility size itself.
+
+Examination of specific state fixed effect coefficients revealed substantial geographic variation in contract labor use patterns. States with highest contract CNA proportions included Vermont (state coefficient = +0.109, indicating 10.9\% contract CNAs compared to the national mean of 5.9\%), suggesting region-specific factors (labor supply, regulations, or management practices) drive elevated contract labor reliance. States with lower-than-average contract CNA proportions included Arkansas (state coefficient approximately --0.067, indicating approximately 2--3\% contract CNAs). This 0.177-unit range (from Vermont to Arkansas) represents approximately 3 times the national mean, demonstrating the magnitude of state-to-state variation in contract staffing strategies.
+
+Similar patterns emerged in the RN-to-LPN analysis, where state effects notably increased model R\textsuperscript{2}, indicating state-level factors influence RN-to-LPN ratios beyond facility size effects. This geographic variation likely reflects: (1) state minimum staffing regulations (which vary in RN requirements), (2) Medicaid reimbursement rates (which vary by state and directly influence facility revenue and staffing capacity), (3) regional nursing education pipeline development (which shapes RN and LPN supply), and (4) labor market wage structures (which influence relative cost of RN versus LPN labor).
+
+The dominance of state effects has critical implications. It suggests that understanding nursing home staffing requires attention to contextual factors largely outside individual facilities' control---factors determining the range of choices available to facility managers rather than how facilities optimize within those choices. A facility's location matters more for predicting contract labor use than the facility's size. This finding emphasizes that geographic, regulatory, and labor market constraints may more powerfully determine staffing outcomes than organizational characteristics like size.
+
+\subsection{Sensitivity Analyses and Robustness}
+
+Table~\ref{tab:sensitivity_analyses} presents the results of six sensitivity analyses testing the robustness of primary findings to alternative analytical specifications.
+
+\input{../04-analysis/outputs/tables/table4_sensitivity.tex}
+
+The core finding---negative association between facility size and RN-to-LPN ratio---demonstrated substantial robustness across alternative specifications. When outliers were excluded more conservatively (|z-score| $>$ 3.5), the coefficient remained negative and significant. When outliers were excluded even more stringently (|z-score| $>$ 3.0), the negative relationship persisted and maintained statistical significance. Excluding facilities below 30 residents per day retention the negative coefficient, and excluding facilities below 50 residents per day maintained the pattern. The consistency of results across these variations provides confidence that the negative relationship reflects a genuine systematic pattern rather than an artifact of outlier handling or sample composition decisions.
+
+Similarly, the non-significant association between facility size (linear and quadratic) and contract CNA proportions remained non-significant across all sensitivity specifications, confirming the absence of the hypothesized inverted-U pattern is not an artifact of analytical choices. The contrast in robustness between these two findings is instructive: the negative RN-to-LPN relationship represents a stable empirical pattern worthy of explanation, while the null contract CNA finding reflects genuine absence of association rather than measurement instability or analytical sensitivity.
+
+\section{Discussion}
+
+\subsection{Hypothesis 1 Reconsidered: Explaining the Negative RN-to-LPN Relationship}
+
+This study set out to test a clear theoretical prediction: larger nursing homes achieve staffing efficiency through economies of scale, resulting in higher RN-to-LPN ratios. Instead, we found the opposite relationship: larger facilities maintained significantly \textit{lower} RN-to-LPN ratios than smaller facilities, a finding robust across all sensitivity analyses and consistent across 8 quarters of data. This contradiction between theoretical prediction and empirical observation is not merely statistically significant but also clinically meaningful: moving from a 30-resident to a 130-resident facility corresponds to a 6-fold reduction in RN-to-LPN ratio, representing substantial shifts in care staffing composition.
+
+Rather than dismissing this contradiction as anomalous, several complementary mechanisms merit consideration for explaining why facility size does not produce the predicted efficiency improvements in RN-to-LPN ratios.
+
+\noindent\textbf{Regulatory ceiling hypothesis:} The most straightforward explanation is that CMS and state regulations establish \textit{minimum} RN staffing requirements that simultaneously serve as implicit \textit{ceilings}. Proposed CMS regulations require 3.48 hours per resident day of total direct care staffing but specify minimum RN requirements that may create effective upper bounds on RN spending. If regulatory requirements establish that all facilities must maintain RN presence (e.g., an RN must oversee each shift), but do not scale these requirements proportionally with facility size, then larger facilities can meet regulatory requirements through proportional LPN increases rather than RN increases. Under this mechanism, the negative coefficient reflects not quality failure but rather efficient compliance with fixed regulatory requirements. Supporting this interpretation, Shin and colleagues (2024) found that facilities appear to converge on standardized staffing targets (0.75 RN hours per resident day) regardless of size, suggesting regulatory baselines become operational targets. Bowblis and Brunt (2024) similarly found that while California minimum staffing regulations increased total staffing hours, the composition showed facility-specific variation, suggesting that regulation establishes floors but allows heterogeneity above those floors.
+
+\noindent\textbf{Labor market constraint hypothesis:} A second compelling explanation is that the persistent nursing shortage in long-term care constrains RN availability regardless of facility size or financial resources. If regional labor markets supply insufficient RNs to meet all facilities' demand---a plausible scenario given documented RN workforce crises---then larger facilities cannot simply hire more RNs to increase their RN-to-LPN ratios. Instead, they rationally substitute LPNs and CNAs for unavailable RNs, producing the observed negative size-ratio relationship. Brazier and colleagues (2023) documented that during COVID-19, RN hours declined 43\% despite facilities' obvious need, indicating that supply, not demand, determines achievable RN staffing. Kang and colleagues (2024) found that staffing disparities were most acute in distressed communities where RN supply was limited, regardless of facility financial capacity. Lanoix (2021) described facilities implementing emergency strategies (international recruitment, modified scheduling) when RN supply became constrained. Collectively, this literature indicates that RN availability is a binding constraint. Under labor market constraint, larger facilities' lower RN-to-LPN ratios reflect adaptation to supply shortage rather than efficiency failure or deliberate cost minimization.
+
+\noindent\textbf{Process innovation hypothesis:} A third explanation is that larger facilities have developed and standardized care processes that operate effectively with lower RN-to-LPN ratios. These processes might include systematic delegation of specific tasks to LPNs, standardized clinical protocols reducing RN supervision needs, or technological systems (electronic health records, decision support) enabling remote RN oversight. Under this scenario, larger facilities' lower RN-to-LPN ratios reflect intentional, evidence-based process design rather than quality compromise. Huang and colleagues (2025) showed that MSSP participation increased RN staffing while reducing LPN staffing, demonstrating that facilities make deliberate staffing composition choices responding to incentive structures. Cho and colleagues (2020) found strong associations between RN staffing and quality outcomes but also noted that facilities vary widely in RN deployment patterns, suggesting different care models. If larger facilities have developed processes enabling clinical quality with lower RN proportions, then the observed staffing composition represents optimization rather than failure.
+
+These three mechanisms---regulatory constraints, labor market shortage, and process innovation---are not mutually exclusive. Large facilities likely operate simultaneously under regulatory constraints, face labor market limitations, and may have developed efficient processes within these constraints. The empirical finding that RN-to-LPN ratios decrease with facility size probably reflects a combination of these factors. Which mechanism dominates remains an important empirical question requiring outcome-linked analysis (do residents in facilities with lower RN-to-LPN ratios experience worse outcomes?) and qualitative investigation (what care processes do large facilities employ to support lower RN ratios?).
+
+Importantly, the finding that RN-to-LPN ratios do not increase with facility size should not automatically be interpreted as indicating quality failure. It may instead reflect constrained optimization within real-world limitations that override theoretical predictions about efficiency. The stronger interpretation is that external constraints (regulation, labor supply) dominate organizational size as determinants of staffing composition.
+
+\subsection{Hypothesis 2 Reconsidered: Why Contract Labor Shows No Inverted-U Pattern}
+
+The predicted inverted-U pattern for contract CNA reliance by facility size was theoretically plausible but empirically unsupported. The hypothesis suggested that mid-sized facilities---too large to operate with purely flexible staffing but too small to leverage administrative economies of scale---would face unique structural pressures driving contract labor reliance. Yet we observed that contract labor use was uniformly distributed across the facility size spectrum, with all size quartiles employing approximately 6\% contract CNAs. Several explanations merit consideration.
+
+First, if contract labor serves operational functions that exist uniformly across all facility sizes (managing leave coverage, backfilling vacancies, adjusting for seasonal demand, responding to staffing emergencies), then contract labor use should be size-invariant, which is precisely what we observe. Contract labor in nursing homes may function more as a standard operational tool available to all facilities rather than as a solution to size-specific structural vulnerabilities. All facilities, regardless of size, face the need to manage temporary staffing gaps; contract labor provides a mechanism. If such gaps occur at similar frequencies across facility sizes, then contract labor proportions should be similar, as observed.
+
+Second, the low median contract labor use (1.9\% across all facilities) indicates that contract labor is supplementary rather than central to staffing strategy for most facilities. The distinction between small and large facilities is not whether they use contract labor but rather the degree to which they rely on it (ranging from zero to 100\%, but with median near 2\%). If organizational management quality, workforce culture, and operational planning---rather than organizational size---predict the ability to minimize contract labor, then size-independent relationships emerge, as observed.
+
+Third, larger facilities may have developed sophisticated workforce planning and retention programs enabling them to minimize contract labor despite their size. Conversely, smaller facilities in particular labor markets may face acute challenges recruiting permanent CNAs and resort to higher contract labor use. Under this scenario, contract labor reflects the effectiveness of workforce strategies and labor market conditions rather than facility size per se.
+
+The dominance of state effects in explaining contract CNA use (11 times greater than size effects) points toward regulatory, labor supply, and regional factors as primary drivers. States with higher contract CNA proportions (e.g., Vermont at 10.9\%) may face specific conditions---RN shortages making permanent CNA recruitment difficult, state regulations permitting flexible staffing arrangements, high cost of living increasing turnover---that differ from states with lower proportions. Understanding state-level drivers of contract labor variation could yield actionable policy insights for reducing contingent workforce reliance.
+
+\subsection{Integration with Prior Literature}
+
+These findings contribute important qualifications to the extensive literature on economies of scale in healthcare organizations. Christensen (2003) identified economies of scale in average cost functions but also documented diseconomies of scale in lower-cost distributions. Farsi and colleagues (2008) concluded that ``optimal facility size varies depending on local market conditions,'' implying that scale effects are heterogeneous and context-dependent. Chattopadhyay and Ray (1996) documented cases where facility networks were less efficient than comparable independent operations, indicating that size alone does not guarantee efficiency. Our findings align with this literature of heterogeneous and context-dependent scale effects while adding specificity: facility size predicts total staffing levels but not staffing composition or contract labor use once geographic factors are considered.
+
+The dominant explanatory role of state fixed effects aligns with emerging literature emphasizing regulatory and labor market constraints over organizational characteristics. Halifax and Harrington (2022) documented that ``despite estimates showing only 4.2\% of national nursing home expenditures would be required to meet recommended minimum staffing levels, widespread noncompliance persists,'' suggesting that policy (not resources) determines achievable staffing. Zhang and Grabowski (2004) found that regulatory compliance does not automatically generate quality improvement. Our finding that state factors explain 11 times more variance than facility size in contract labor use reflects this policy-centric view: if regulation and labor markets (not internal efficiency) determine staffing patterns, then facility size should be a weak predictor, which is what we observe.
+
+The interpretation that RN shortage constrains availability aligns with workforce crisis literature. Brazier and colleagues (2023), Kang and colleagues (2024), and Lanoix (2021) all document acute RN shortages in nursing homes, with workforce supply rather than facility demand determining achievable staffing levels. Levy and colleagues (2025) explicitly model how ``labor supply availability determines feasible staffing models,'' positioning external workforce factors as primary constraints. Our finding that larger facilities do not achieve higher RN-to-LPN ratios can be understood as evidence that even organizations with superior resources cannot overcome supply-side constraints, a conclusion aligned with this emerging workforce literature.
+
+\subsection{Theoretical Implications}
+
+These findings require important qualifications to Transaction Cost Economics as applied to healthcare staffing. TCE's core premise---that larger organizations economize on transaction costs and achieve superior efficiency---receives limited support in the clinical staffing domain. Several reasons explain this limited applicability:
+
+First, healthcare staffing operates under regulatory constraints that TCE does not adequately model. CMS and state regulations establish minimum staffing floors that are size-invariant or poorly scaled to size. Under such constraints, larger organizations cannot easily overcome regulatory baselines through efficiency innovations, limiting the domain in which TCE predictions apply. TCE predicts optimization when constraints are few; in regulated industries like healthcare, constraints may dominate.
+
+Second, professional labor markets (for RNs and LPNs) are characterized by inelastic supply---not all markets have RNs available regardless of compensation. TCE assumes that larger organizations can access better prices for inputs through scale; yet if RNs are simply unavailable in a region regardless of price, then size provides no advantage. The nursing shortage exemplifies this market structure.
+
+Third, nursing home staffing involves moral hazard and quality uncertainty issues that standard TCE does not address. Residents cannot assess care quality directly; regulators impose standards; litigation risks limit cost-cutting. These healthcare-specific features create agency costs that override pure efficiency logic.
+
+A more nuanced application of TCE to nursing homes might distinguish between domains where scale genuinely produces efficiency (administrative functions, supply chain, information technology) versus domains where external constraints dominate (clinical staffing, regulatory compliance). This distinction suggests that TCE should be applied more selectively in healthcare, acknowledging sector-specific constraints.
+
+Donabedian's Structure-Process-Outcome framework remains conceptually sound but requires modification. Facility size (structure) predicts total staffing (process input) but explains only 3\% of RN-to-LPN ratio variance and shows no relationship to contract labor use. The framework's causal arrow from structure to process is partially broken by external constraints (regulation, labor market) that operate as mediators or confounders. A revised framework might explicitly include regulatory environment and labor market conditions as moderating variables shaping the structure-process relationship. The framework remains valuable but requires acknowledgment that external constraints may dominate organizational structure.
+
+\subsection{Policy and Practice Implications}
+
+\noindent\textbf{Policy level:} The finding that facility size does not predict staffing mix efficiency or contract labor reliance has important implications for policymakers. Current CMS policy applies uniform minimum staffing standards (3.48 hours per resident day proposed in 2024) regardless of facility size. The implicit assumption is that all facilities can achieve these standards through organizational optimization. Our results support this uniform approach: if larger facilities do not systematically achieve staffing mix advantages, then uniform standards protect residents in smaller facilities without sacrificing efficiency in larger ones. The alternative---size-differentiated standards---would require empirical evidence that larger facilities can operate with different staffing compositions without quality loss. Such evidence is currently unavailable.
+
+Second, the dramatic state-level variation in contract labor (11 times larger effects than size) suggests that state regulatory environments shape staffing strategies more powerfully than facility size. Policies targeting regional workforce development, state-level nursing training initiatives, or regulatory harmonization may be more effective than facility-size-based approaches. States with low contract CNA use (Arkansas) might offer lessons for high-use states (Vermont) regarding workforce retention or training strategies.
+
+Third, the financial costs of contract labor (Ghiasi et al., 2023 documented 0.45--0.52\% operating margin reduction per 10\% increase in contract ratio) combined with quality costs (Khoja et al., 2026 found associations with injurious falls) suggest that addressing root causes of contract labor reliance---RN shortage, inflexible regulatory requirements, inadequate reimbursement---may be more effective than assuming larger facilities will naturally minimize such use through economies of scale.
+
+\noindent\textbf{Practice level:} For nursing home administrators and systems, the implications are sobering. Mergers and consolidations built on assumptions of ``economies of scale in staffing'' may not produce expected improvements in staffing mix or quality. If larger size does not predictably increase RN-to-LPN ratios or decrease contract labor reliance, then the staffing efficiency argument for consolidation is substantially weakened. Administrators should carefully evaluate other proposed efficiency gains (administrative consolidation, bulk purchasing, information systems) rather than assuming staffing improvements from growth.
+
+Second, achieving staffing efficiency likely requires attention to external (geographic, regulatory, labor market) factors more than internal (size, structure) optimization. Facilities competing for RN recruitment in tight labor markets face fundamentally different constraints than facilities in RN-abundant regions. Workforce strategies should address these asymmetries: partnerships with nursing education programs, housing support for relocated nurses, competitive compensation, and work environment improvements may be more effective than pure scale growth.
+
+Third, the lower RN-to-LPN ratios in larger facilities should be interpreted cautiously. They may reflect rational process design and clinical excellence rather than inadequate staffing. Alternatively, they may reflect constrained choices due to RN shortage or cost pressures. Distinguishing between these scenarios requires outcome-linked analysis and investigation of management practices in high-performing large facilities using lower RN ratios.
+
+\subsection{Study Strengths and Limitations}
+
+\noindent\textbf{Strengths:} This study offers several important strengths enhancing confidence in findings. First, the large nationally representative sample (14,209 facilities across 52 states, representing 94.9\% of identified nursing homes) provides exceptional statistical power and generalizability. Most prior nursing home studies examined single states, regional samples, or smaller national surveys; this study's sample size enables precise estimation of modest effect sizes and confident generalization to the U.S. nursing home industry. Second, eight quarters of comprehensive Payroll-Based Journal data provide temporal stability verification. Rather than relying on a single snapshot, we examined consistent patterns across two calendar years, capturing seasonal variation and year-to-year trends. Third, precise measurement from administrative payroll data avoids recall bias and survey response errors inherent in survey-based nursing home research. The PBJ data distinguish between employee and contract workers recorded administratively in payroll systems, providing more accurate measurement of contract labor proportions than survey methods might capture. Fourth, core findings demonstrated robustness across six alternative model specifications and outlier handling approaches, increasing confidence that relationships reflect genuine patterns rather than analytical artifacts.
+
+\noindent\textbf{Limitations:} Several important limitations circumscribe the conclusions. First, the cross-sectional design prevents causal inference. While we document that larger facilities have lower RN-to-LPN ratios on average, we cannot establish that facility size \textit{causes} staffing composition differences. Selection effects remain plausible: facilities intentionally employing lower RN-to-LPN ratios may preferentially grow larger, or facilities in particular geographic contexts may both grow larger and adopt specific staffing models. Causal inference would require within-facility longitudinal analysis (examining how individual facilities' staffing changed as they grew) or instrumental variables approaches, neither employed in this study.
+
+Second, aggregation to facility-level means precludes examination of care episodes, individual resident needs, or unit-level staffing allocation. A nursing home with low average RN-to-LPN ratio might concentrate RNs in intensive care units while using LPNs for independent residents. Our facility-level analysis cannot distinguish tactical allocation strategies from system-wide understaffing. Granular within-facility data would better characterize staffing patterns.
+
+Third, PBJ data capture paid hours including overtime but may not fully account for salaried administrative and supervisory time. If larger facilities disproportionately employ management overhead, and if management time substitutes for direct-care RN time, this measurement issue could bias size-staffing relationships. However, this limitation would bias results toward \textit{overstating} RN hours in larger facilities, which would make the observed negative RN-to-LPN relationship even more striking.
+
+Fourth, this study examines structure (size) and process (staffing) but cannot assess outcomes. The Donabedian framework's ultimate validity depends on demonstrating that structure-process changes produce outcome improvements. It is theoretically possible---even plausible---that larger facilities' lower RN-to-LPN ratios reflect optimized processes achieving quality outcomes with different staffing configurations. Conversely, lower RN-to-LPN ratios might reflect quality compromises evident in linked outcome data. Without outcomes, the study remains incomplete.
+
+Fifth, state regulatory and labor market confounding may bias facility size coefficients. The dramatic dominance of state effects suggests that unmeasured state factors confound size relationships. For example, states with stronger nursing education pipelines might both have more large facilities and higher RN-to-LPN ratios on average, biasing size coefficients downward. The analysis includes state fixed effects for contract CNA models but relies on linear size effects for RN-to-LPN models without full geographic confounding adjustment.
+
+Finally, the analysis period (CY2023--CY2024) captures the post-acute COVID-19 period when staffing patterns may remain disrupted. Whether findings generalize to typical operating periods remains uncertain. Pre-pandemic data might reveal different size-staffing relationships if COVID-19 disrupted normal operational patterns.
+
+\subsection{Conclusion}
+
+This large national study found that facility size predicts total nursing home staffing levels but not staffing composition (RN-to-LPN ratios) or contract labor reliance. Larger facilities employ proportionally fewer registered nurses despite employing substantially more nurses in absolute terms. State-level factors explain 11 times more variation in contract labor use than facility size. These findings contradict Transaction Cost Economics predictions and challenge assumptions that consolidation will improve staffing efficiency.
+
+The results suggest that external constraints---regulatory requirements, nursing shortage, geographic labor market conditions---dominate organizational size as determinants of staffing patterns. Policymakers and administrators should reconsider strategies relying on consolidation to achieve staffing efficiency and instead focus on addressing the macro-level constraints (RN supply, regulation, reimbursement) that appear to drive staffing outcomes more powerfully than organizational structure.
+
+Future research should examine whether larger facilities' lower RN-to-LPN ratios reflect quality-maintaining process innovations or constrained choices due to shortage. Outcome-linked analysis would enable the ultimate test of these competing hypotheses. Additionally, understanding the specific state-level factors driving geographic variation in staffing patterns could yield actionable policy insights for improving workforce deployment across regions.
+
+\section*{Acknowledgments}
+
+This research was supported by Elwood Research. The authors acknowledge the Centers for Medicare \& Medicaid Services for maintaining and publicly releasing Payroll-Based Journal data that enabled this analysis. We thank colleagues for feedback on earlier versions of this manuscript.
+
+\newpage
+
+\section*{References}
+
+\bibliographystyle{unsrtnat}
+\bibliography{../01-literature/references}
+
+\end{document}

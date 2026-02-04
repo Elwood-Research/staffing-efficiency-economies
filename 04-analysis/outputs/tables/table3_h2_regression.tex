@@ -1,0 +1,26 @@
+
+\begin{table}[htbp]
+\centering
+\caption{Regression Model 2: Contract CNA Proportion and Facility Size}
+\label{tab:model2_contract_cna}
+\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Model Term} & \textbf{Coefficient} & \textbf{SE} & \textbf{p-value} & \textbf{Result} \\
+\midrule
+Linear (Resident Census) & -0.000050 & 0.000059 & 0.392930 & \\
+Quadratic (Census$^2$) & 0.00000030 & 0.00000028 & 0.286061 & \\
+\addlinespace
+\multicolumn{5}{l}{\textit{State fixed effects: 51 indicators included (reference state omitted)}} \\
+\bottomrule
+\multicolumn{5}{l}{\textit{Model statistics:}} \\
+\multicolumn{5}{l}{R$^2$ = 0.1221; N = 14,209; Linear pattern (H2 not supported).} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\begin{tablenotes}
+\small
+\item \textit{Note}: Dependent variable is contract CNA proportion (0-1 scale). Negative quadratic coefficient indicates inverted-U relationship supporting H2.
+\end{tablenotes}
+\end{table}

@@ -1,0 +1,43 @@
+# LaTeX artifacts (but keep PDFs!)
+*.aux
+*.log
+*.out
+*.toc
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.nav
+*.snm
+*.vrb
+*.xdv
+*.pyg
+*.bcf
+*.run.xml
+
+# Python/Jupyter
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.ipynb_checkpoints/
+*.ipynb
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Data files (keep only aggregated results)
+04-analysis/outputs/*.csv
+
+# But EXPLICITLY KEEP these important files:
+!05-manuscript/manuscript.pdf
+!presentation/slides.pdf
+!

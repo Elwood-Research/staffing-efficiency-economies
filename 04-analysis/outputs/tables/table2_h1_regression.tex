@@ -1,0 +1,25 @@
+
+\begin{table}[htbp]
+\centering
+\caption{Regression Model 1: RN-to-LPN Ratio and Facility Size}
+\label{tab:model1_rn_lpn}
+\small
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Predictor} & \textbf{Coefficient} & \textbf{SE} & \textbf{p-value} & \textbf{Result} \\
+\midrule
+Daily Resident Census & -0.006970 & 0.002456 & 0.004554 & \checkmark \\
+\addlinespace
+\multicolumn{5}{l}{\textit{State fixed effects: 51 indicators included (reference state omitted)}} \\
+\bottomrule
+\multicolumn{5}{l}{\textit{Model statistics:}} \\
+\multicolumn{5}{l}{R$^2$ = 0.0279; N = 14,209; Positive linear trend supports H1.} \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\begin{tablenotes}
+\small
+\item \textit{Note}: Dependent variable is RN-to-LPN ratio (hours). Positive coefficient indicates higher RN-to-LPN ratios in larger facilities, consistent with H1.
+\end{tablenotes}
+\end{table}

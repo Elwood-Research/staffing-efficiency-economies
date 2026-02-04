@@ -1,0 +1,392 @@
+\documentclass[aspectratio=169]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{array}
+\usepackage{adjustbox}
+\usepackage{hyperref}
+
+% Custom colors
+\definecolor{PrimaryBlue}{HTML}{1F4788}
+\definecolor{AccentOrange}{HTML}{E87722}
+\definecolor{DarkGray}{HTML}{333333}
+\definecolor{LightGray}{HTML}{F5F5F5}
+
+% Beamer theme
+\usetheme{Madrid}
+\usecolortheme[named=PrimaryBlue]{structure}
+\setbeamercolor{background canvas}{bg=white}
+\setbeamercolor{frametitle}{bg=PrimaryBlue, fg=white}
+\setbeamercolor{normal text}{fg=DarkGray}
+\setbeamercolor{itemize item}{fg=AccentOrange}
+
+\setbeamerfont{frametitle}{size=\Large, series=\bfseries}
+\setbeamerfont{normal text}{size=\normalsize}
+
+\setbeamertemplate{navigation symbols}{}
+
+\title{Staffing Mix Efficiency and Economies of Scale in Nursing Homes}
+\author{Elwood Research}
+\institute{Center for Health Systems Research}
+\date{February 2026}
+
+\begin{document}
+
+% ============================================================================
+% SLIDE 1: TITLE
+% ============================================================================
+\begin{frame}[plain]
+  \titlepage
+  \vfill
+  \begin{center}
+    \textit{A quantitative analysis of 14,209 U.S. nursing homes}
+    \\[0.3em]
+    \textit{CY2023 Q1 -- CY2024 Q4}
+  \end{center}
+\end{frame}
+
+% ============================================================================
+% SLIDE 2: RESEARCH QUESTIONS & BACKGROUND
+% ============================================================================
+\begin{frame}
+  \frametitle{Why Study Facility Size \& Staffing Mix?}
+  
+  \begin{columns}[T]
+    \column{0.55\textwidth}
+    \begin{itemize}
+      \item \textbf{Staffing Crisis}: RN/LPN shortages in nursing homes are unprecedented
+      \item \textbf{Quality Driver}: Care quality directly depends on staffing composition
+      \item \textbf{Budget Impact}: Staffing is 60--70\% of operational costs
+      \item \textbf{Policy Question}: Do larger facilities achieve better staffing efficiency?
+      \item \textbf{Research Gap}: Size-staffing relationship unexplored in PBJ era
+    \end{itemize}
+    
+    \column{0.45\textwidth}
+    \centering
+    \colorbox{LightGray}{
+      \parbox{0.9\linewidth}{
+        \vspace{0.3em}
+        \centering
+        \textbf{Theoretical Basis}
+        \vspace{0.3em}
+        
+        \textit{Transaction Cost Economics predicts that larger organizations achieve economies of scale}
+        
+        \vspace{0.3em}
+      }
+    }
+  \end{columns}
+  
+  \vspace{0.8em}
+  \centering
+  \small \textbf{Central Question:} Does facility size predict more efficient staffing mix?
+\end{frame}
+
+% ============================================================================
+% SLIDE 3: HYPOTHESES
+% ============================================================================
+\begin{frame}
+  \frametitle{Our Two Hypotheses}
+  
+  \vspace{0.5em}
+  
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    
+    \colorbox{LightGray}{
+      \parbox{0.9\linewidth}{
+        \vspace{0.3em}
+        \centering
+        \Large \textbf{H1: RN-to-LPN Ratio}
+        \vspace{0.2em}
+        
+        {\normalsize Larger facilities have higher RN-to-LPN ratios}
+        
+        \vspace{0.3em}
+        \normalsize
+        \begin{itemize}
+          \setlength{\itemsep}{0.05em}
+          \item Economies of scale enable specialization
+          \item Prediction: Linear positive relationship
+          \item Expected: 50\% increase across facility sizes
+        \end{itemize}
+        \vspace{0.3em}
+      }
+    }
+    
+    \column{0.48\textwidth}
+    
+    \colorbox{LightGray}{
+      \parbox{0.9\linewidth}{
+        \vspace{0.3em}
+        \centering
+        \Large \textbf{H2: Contract CNA}
+        \vspace{0.2em}
+        
+        {\normalsize Mid-sized facilities rely most on contract labor}
+        
+        \vspace{0.3em}
+        \normalsize
+        \begin{itemize}
+          \setlength{\itemsep}{0.05em}
+          \item Mid-size = maximum structural vulnerability
+          \item Prediction: Inverted-U relationship
+          \item Expected: 8--10\% peak at median size
+        \end{itemize}
+        \vspace{0.3em}
+      }
+    }
+  \end{columns}
+\end{frame}
+
+% ============================================================================
+% SLIDE 4: METHODS
+% ============================================================================
+\begin{frame}
+  \frametitle{Cross-Sectional Analysis of 14,209 Nursing Homes}
+  
+  \begin{itemize}
+    \item \textbf{Data Source:} CMS Payroll-Based Journal (PBJ), 8 quarters (CY2023--2024)
+    \item \textbf{Sample:} 14,209 Medicare-certified U.S. nursing homes (94.9\% retention after exclusions)
+    \item \textbf{Primary Outcomes:}
+      \begin{itemize}
+        \item RN-to-LPN ratio = RN hours per resident day $\div$ LPN hours per resident day
+        \item Contract CNA proportion = Contract CNA hours $\div$ Total CNA hours
+      \end{itemize}
+    \item \textbf{Main Exposure:} Daily Resident Census (continuous measure of facility size)
+    \item \textbf{Statistical Method:} Restricted Cubic Spline (RCS) regression with state fixed effects
+    \item \textbf{Robustness Checks:} 6 pre-specified sensitivity analyses (outlier thresholds, minimum census variations)
+  \end{itemize}
+  
+  \vspace{0.8em}
+  \textbf{Geographic Coverage:} 52 states and territories; Mean facility size: 79.9 $\pm$ 38.6 residents/day
+\end{frame}
+
+% ============================================================================
+% SLIDE 5: DESCRIPTIVE FINDINGS
+% ============================================================================
+\begin{frame}
+  \frametitle{Study Sample Characteristics}
+  
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    
+    \textbf{Facility Size (Resident Census):}
+    \begin{itemize}
+      \setlength{\itemsep}{0.2em}
+      \item Mean: 79.9 $\pm$ 38.6 residents/day
+      \item Median: 75 [IQR: 51--101]
+      \item Range: 20--276 residents/day
+    \end{itemize}
+    
+    \vspace{0.7em}
+    \textbf{Staffing Hours per Resident Day:}
+    \begin{itemize}
+      \setlength{\itemsep}{0.2em}
+      \item RN: 0.315 $\pm$ 0.229 hrs
+      \item LPN: 0.636 $\pm$ 0.387 hrs
+      \item CNA (Direct): 1.630 $\pm$ 0.853 hrs
+      \item CNA (Contract): 0.115 $\pm$ 0.192 hrs
+    \end{itemize}
+    
+    \column{0.52\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=\linewidth, height=0.75\textheight, keepaspectratio]{figure1a_census_histogram.png}
+      \caption{\small Distribution of Facility Size}
+    \end{figure}
+  \end{columns}
+  
+  \vspace{0.2em}
+  \small N = 14,209 facilities across 52 states/territories
+\end{frame}
+
+% ============================================================================
+% SLIDE 6: H1 RESULTS
+% ============================================================================
+\begin{frame}
+  \frametitle{H1 Results: RN-to-LPN Ratio by Facility Size}
+  
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    
+    \textbf{HYPOTHESIS CONTRADICTED}
+    
+    \vspace{0.3em}
+    \begin{itemize}
+      \setlength{\itemsep}{0.3em}
+      \item Larger facilities have LOWER RN-to-LPN ratios (opposite of prediction)
+      \item Coefficient: $\beta = -0.00697$ per 10-resident increase
+      \item p-value: 0.005 (highly significant)
+      \item 95\% CI: $[-0.0122, -0.0017]$
+      \item Interpretation: Larger facilities employ proportionally MORE LPNs relative to RNs
+    \end{itemize}
+    
+    \vspace{0.8em}
+    \textbf{Robustness:} STABLE across all 6 sensitivity analyses
+    
+    \column{0.52\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=\linewidth, height=0.75\textheight, keepaspectratio]{figure2_h1_spline_fit.png}
+      \caption{\small RN-to-LPN vs. Facility Size. Points = decile means; shaded = 95\% CI}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+% ============================================================================
+% SLIDE 7: H2 RESULTS
+% ============================================================================
+\begin{frame}
+  \frametitle{H2 Results: Contract CNA Proportion by Facility Size}
+  
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+    
+    \textbf{NO INVERTED-U PATTERN OBSERVED}
+    
+    \vspace{0.3em}
+    \begin{itemize}
+      \setlength{\itemsep}{0.3em}
+      \item Flat relationship: Contract CNA use unchanged by facility size
+      \item Linear term: $\beta = -0.000050$ (p = 0.393, not significant)
+      \item Quadratic term: $\beta = +0.0000003$ (p = 0.286, not significant)
+      \item Pattern: Contract CNA approximately 5--6\% across all deciles
+      \item Implication: Facility size does NOT determine contract labor strategy
+    \end{itemize}
+    
+    \vspace{0.8em}
+    \textbf{Key Finding:} State/geographic factors explain 11x more variance than facility size
+    
+    \column{0.52\textwidth}
+    \begin{figure}
+      \centering
+      \includegraphics[width=\linewidth, height=0.75\textheight, keepaspectratio]{figure3_h2_spline_fit.png}
+      \caption{\small Contract CNA vs. Facility Size. Flat pattern across all sizes}
+    \end{figure}
+  \end{columns}
+\end{frame}
+
+% ============================================================================
+% SLIDE 8: GEOGRAPHIC DOMINANCE
+% ============================================================================
+\begin{frame}
+  \frametitle{Geographic Factors Dominate Facility Size}
+  
+  \textbf{The Big Picture:} State effects explain 11 times more variance than facility size
+  
+  \vspace{0.6em}
+  
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+    
+    \textbf{Variance Explained (R²):}
+    \begin{itemize}
+      \item Facility size alone: 3\%
+      \item State fixed effects: 12.2\%
+      \item State regulation >> organizational scale
+    \end{itemize}
+    
+    \vspace{0.8em}
+    \textbf{Regional Extremes (Contract CNA):}
+    \begin{itemize}
+      \item Highest: Vermont (+10.9\%)
+      \item Maine (+6.7\%), Massachusetts (+5.4\%)
+      \item Lowest: Arkansas (-6.7\%)
+      \item Range: 17.6 percentage points
+    \end{itemize}
+    
+    \column{0.5\textwidth}
+    
+    \textbf{State Policy Mechanisms:}
+    \begin{itemize}
+      \item Medicaid reimbursement rates
+      \item State staffing mandates
+      \item Licensed labor supply constraints
+      \item Union presence and collective bargaining
+      \item Post-pandemic workforce dynamics
+    \end{itemize}
+    
+    \vspace{1em}
+    \textbf{Implication:} Geographic policy matters far more than facility consolidation
+    
+  \end{columns}
+\end{frame}
+
+% ============================================================================
+% SLIDE 9: DISCUSSION & IMPLICATIONS
+% ============================================================================
+\begin{frame}
+  \frametitle{Discussion: Why Did Our Hypotheses Fail?}
+  
+  \vspace{0.3em}
+  
+  \textbf{1. Theoretical Implications}
+  \begin{itemize}
+    \item Transaction Cost Economics assumptions may not hold in regulated healthcare
+    \item External constraints (regulation, labor scarcity) override organizational optimization
+  \end{itemize}
+  
+  \vspace{0.5em}
+  \textbf{2. Policy Implications}
+  \begin{itemize}
+    \item CMS minimum staffing standards effectively prevent size-based inequality
+    \item State-level Medicaid reimbursement dominates facility-level decisions
+  \end{itemize}
+  
+  \vspace{0.5em}
+  \textbf{3. Practice Implications}
+  \begin{itemize}
+    \item Facility consolidation strategies cannot assume staffing efficiency gains
+    \item RN shortage is binding constraint; facility size insufficient to overcome it
+    \item Contract labor reliance determined by geography, not organizational scale
+  \end{itemize}
+  
+  \vspace{0.5em}
+  \textbf{4. Study Limitations}
+  \begin{itemize}
+    \item Cross-sectional design: causality not established
+    \item No outcome linkage: staffing composition not linked to care quality in this analysis
+  \end{itemize}
+\end{frame}
+
+% ============================================================================
+% SLIDE 10: CONCLUSION & FUTURE DIRECTIONS
+% ============================================================================
+\begin{frame}
+  \frametitle{Conclusion \& Future Directions}
+  
+  \vspace{0.3em}
+  
+  \textbf{What We Learned:}
+  \begin{itemize}
+    \item External regulatory and policy constraints dominate facility-level characteristics
+    \item Staffing composition is NOT driven by facility size or economies of scale
+    \item Geographic variation (17.6 percentage points) far exceeds facility-size effects
+  \end{itemize}
+  
+  \vspace{0.6em}
+  \textbf{Critical Next Steps:}
+  \begin{itemize}
+    \item Link staffing composition to actual care quality and resident outcomes
+    \item Investigate causal mechanisms: regulation or labor markets?
+    \item Examine temporal trends: How have staffing patterns evolved post-pandemic?
+  \end{itemize}
+  
+  \vspace{0.6em}
+  \textbf{Call to Action:}
+  \begin{itemize}
+    \item Use findings to inform evidence-based workforce planning
+    \item Recognize that consolidation alone cannot solve staffing challenges
+    \item Target policy interventions at state/regional level, not facility consolidation
+  \end{itemize}
+  
+  \vspace{0.8em}
+  \centering
+  \textbf{Research Question Answered:} Facility size does NOT predict staffing efficiency.
+\end{frame}
+
+\end{document}
